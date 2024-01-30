@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //     tileMode: TileMode.clamp,
           //   ),
           // ),
-          color: myColor,
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: Text(
           sharedPreferences!.getString("name")!,
@@ -80,18 +80,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: const MyDrawer(),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(147, 187, 222, 1),
-              Color.fromRGBO(210, 217, 223, 1),
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          ),
-        ),
+        decoration: const BoxDecoration(color: Colors.white
+            // gradient: LinearGradient(
+            //   colors: [
+            //     Color.fromRGBO(147, 187, 222, 1),
+            //     Color.fromRGBO(210, 217, 223, 1),
+            //   ],
+            //   begin: FractionalOffset(0.0, 0.0),
+            //   end: FractionalOffset(1.0, 0.0),
+            //   stops: [0.0, 1.0],
+            //   tileMode: TileMode.clamp,
+            // ),
+            ),
         child: CustomScrollView(
           slivers: [
             SliverPersistentHeader(

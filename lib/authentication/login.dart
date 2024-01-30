@@ -115,10 +115,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(0.5),
               child: Image.asset(
                 "images/loginimg.png",
-                height: 340,
+                height: 300,
               ),
             ),
           ),

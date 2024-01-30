@@ -39,21 +39,12 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: const Text(
           "Add New Items",
-          style: TextStyle(fontSize: 30, fontFamily: "Lobster"),
+          style: TextStyle(
+              fontSize: 30, fontFamily: "Lobster", color: Colors.white),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -69,24 +60,14 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Colors.cyan,
-            Colors.amber,
-          ],
-          begin: FractionalOffset(0.0, 0.0),
-          end: FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
-          tileMode: TileMode.clamp,
-        )),
+        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
                 Icons.shop_two,
-                color: Colors.white,
+                color: Colors.grey,
                 size: 200.0,
               ),
               ElevatedButton(
@@ -189,21 +170,12 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: const Text(
           "Uploading New Item",
-          style: TextStyle(fontSize: 20, fontFamily: "Lobster"),
+          style: TextStyle(
+              fontSize: 20, fontFamily: "Lobster", color: Colors.white),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -222,7 +194,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
             child: const Text(
               "Add",
               style: TextStyle(
-                color: Colors.cyan,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
                 fontFamily: "Varela",

@@ -36,17 +36,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: Text(
           sharedPreferences!.getString("name")!,
@@ -58,7 +48,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
           IconButton(
             icon: const Icon(
               Icons.library_add,
-              color: Colors.cyan,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.push(

@@ -35,25 +35,13 @@ class _MenusUploadScreensState extends State<MenusUploadScreens> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: const Text(
           "Add New Menu",
           // ignore: unnecessary_const
           style: TextStyle(
-              color: Color.fromARGB(255, 67, 64, 64),
-              fontSize: 30,
-              fontFamily: "lobster"),
+              color: Colors.white, fontSize: 30, fontFamily: "lobster"),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -173,32 +161,20 @@ class _MenusUploadScreensState extends State<MenusUploadScreens> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 209, 133, 19),
-              // Colors.amber
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+          color: const Color.fromARGB(255, 60, 116, 164),
         ),
         title: const Text(
           "Uploading New Menu",
           // ignore: unnecessary_const
           style: TextStyle(
-              color: Color.fromARGB(255, 67, 64, 64),
-              fontSize: 20,
-              fontFamily: "lobster"),
+              color: Colors.white, fontSize: 20, fontFamily: "lobster"),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () {
               clearMenusUploadScreen();
@@ -249,16 +225,16 @@ class _MenusUploadScreensState extends State<MenusUploadScreens> {
           ListTile(
             leading: const Icon(
               Icons.title,
-              color: Colors.cyan,
+              color: Colors.white,
             ),
             // ignore: sized_box_for_whitespace
             title: Container(
               width: 250,
               child: TextField(
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.cyan),
                 controller: shortInfoController,
                 decoration: const InputDecoration(
-                  hintText: "menu info",
+                  hintText: "Menu info",
                   hintStyle: TextStyle(color: Colors.grey),
                   border: InputBorder.none,
                 ),
@@ -272,13 +248,13 @@ class _MenusUploadScreensState extends State<MenusUploadScreens> {
           ListTile(
             leading: const Icon(
               Icons.perm_device_information,
-              color: Colors.cyan,
+              color: Colors.white,
             ),
             // ignore: sized_box_for_whitespace
             title: Container(
               width: 250,
               child: TextField(
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.cyan),
                 controller: titleController,
                 decoration: const InputDecoration(
                   hintText: "Menu title",
