@@ -1,11 +1,11 @@
 // ignore: file_names
+// ignore: file_names
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sellersapp/global/global.dart';
 import 'package:sellersapp/home_screen/main_screen.dart';
 import 'package:sellersapp/models/items.dart';
-import 'package:sellersapp/splash_screen/splashscreen.dart';
 import 'package:sellersapp/widgets/simple-app-bar.dart';
 
 class ItemDetailsScreen extends StatefulWidget {

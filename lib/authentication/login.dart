@@ -89,7 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pop(context);
         // ignore: use_build_context_synchronously
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => const HomeScreen()));
+            // ignore: use_build_context_synchronously
+            context,
+            MaterialPageRoute(builder: (c) => const HomeScreen()));
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
@@ -144,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               // ignore: deprecated_member_use
-              primary: Colors.black,
+              backgroundColor: Colors.black,
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             ),
             onPressed: () {
