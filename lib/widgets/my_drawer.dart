@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sellersapp/authentication/auth_screen.dart';
-import 'package:sellersapp/global/global.dart';
+
+import '../authentication/auth_screen.dart';
+import '../global/global.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});

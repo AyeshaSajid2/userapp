@@ -1,4 +1,4 @@
-package com.example.sellersapp
+package com.example.usersapp
 
 import io.flutter.embedding.android.FlutterActivity
 

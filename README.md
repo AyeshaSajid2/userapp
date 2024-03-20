@@ -1,4 +1,4 @@
-# sellersapp
+# usersapp
 
 A new Flutter project.
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sellersapp/widgets/progress_bar.dart';
-// import 'package:sellersapp/widgets/progress_bar.dart';
+
+import 'progress_bar.dart';
 
 class LoadingDialoge extends StatelessWidget {
   final String? message;

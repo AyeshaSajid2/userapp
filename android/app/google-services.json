@@ -7,9 +7,66 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:361129179339:android:535a2c150ca7e9b1c1034e",
+        "android_client_info": {
+          "package_name": "com.example.buyersapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAU__sRleBl5zcmZU3Qbb8naYob8Zrnkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361129179339:android:2f57a448585de85fc1034e",
+        "android_client_info": {
+          "package_name": "com.example.ridersapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAU__sRleBl5zcmZU3Qbb8naYob8Zrnkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:361129179339:android:31d78bc810df33f5c1034e",
         "android_client_info": {
           "package_name": "com.example.sellersapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAU__sRleBl5zcmZU3Qbb8naYob8Zrnkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361129179339:android:bfa9895815793c3ec1034e",
+        "android_client_info": {
+          "package_name": "com.example.usersapp"
         }
       },
       "oauth_client": [],

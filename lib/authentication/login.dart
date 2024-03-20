@@ -1,24 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:sellersapp/authentication/auth_screen.dart';
-import 'package:sellersapp/widgets/custom_text_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sellersapp/global/global.dart';
-import 'package:sellersapp/home_screen/main_screen.dart';
-import 'package:sellersapp/widgets/error_dialog.dart';
-import 'package:sellersapp/widgets/loading_dialogue.dart';
+import 'package:flutter/material.dart';
+import 'package:usersapp/widgets/error_dialog.dart';
+import 'package:usersapp/widgets/loading_dialogue.dart';
+
+import '../global/global.dart';
+import '../widgets/custom_text_field.dart';
+import 'auth_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  // ignore: use_super_parameters
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  // ignore: library_private_types_in_public_api
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   formValidation() {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
@@ -39,11 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
         context: context,
         builder: (c) {
-          // return const LoadingDialog(
-          //   message: "Checking Credentials",
-          // );
           return const LoadingDialoge(
-            message: "Registring Dialogue",
+            message: "Checking Credentials",
           );
         });
 
@@ -72,18 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future readDataAndSetDataLocally(User currentUser) async {
     await FirebaseFirestore.instance
-        .collection("sellers")
+        .collection("users")
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {
       if (snapshot.exists) {
         await sharedPreferences!.setString("uid", currentUser.uid);
+        await sharedPreferences!.setString("email", snapshot.data()!["email"]);
+        await sharedPreferences!.setString("name", snapshot.data()!["name"]);
         await sharedPreferences!
-            .setString("email", snapshot.data()!["sellerEmail"]);
-        await sharedPreferences!
-            .setString("name", snapshot.data()!["sellerName"]);
-        await sharedPreferences!
-            .setString("photoUrl", snapshot.data()!["sellerAvatarUrl"]);
+            .setString("photoUrl", snapshot.data()!["photoUrl"]);
 
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
@@ -91,17 +88,18 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             // ignore: use_build_context_synchronously
             context,
-            MaterialPageRoute(builder: (c) => const HomeScreen()));
+            MaterialPageRoute(builder: (c) => const Scaffold()));
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
         Navigator.push(
             context, MaterialPageRoute(builder: (c) => const AuthScreen()));
+
         showDialog(
             context: context,
             builder: (c) {
               return const ErrorDialoge(
-                message: "No record exists",
+                message: "No record found.",
               );
             });
       }
@@ -117,10 +115,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(0.5),
+              padding: const EdgeInsets.all(15),
               child: Image.asset(
-                "images/loginimg.png",
-                height: 300,
+                "images/login.png",
+                height: 270,
               ),
             ),
           ),
@@ -145,7 +143,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              // ignore: deprecated_member_use
               backgroundColor: Colors.black,
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             ),

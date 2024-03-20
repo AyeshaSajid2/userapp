@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sellersapp/authentication/auth_screen.dart';
+import 'package:usersapp/authentication/auth_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   // ignore: use_super_parameters

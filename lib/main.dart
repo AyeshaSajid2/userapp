@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:geocoding/geocoding.dart';
-import 'package:sellersapp/firebase_options.dart';
-import 'package:sellersapp/global/global.dart';
-import 'package:sellersapp/splash_screen/splashscreen.dart';
+import 'package:usersapp/firebase_options.dart';
+import 'package:usersapp/global/global.dart';
+import 'package:usersapp/splash_screen/splashscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {

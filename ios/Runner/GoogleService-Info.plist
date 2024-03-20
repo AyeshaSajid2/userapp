@@ -9,11 +9,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.sellersapp</string>
+	<string>com.example.usersapp</string>
 	<key>PROJECT_ID</key>
-	<string>sellersapp-e5619</string>
+	<string>usersapp-e5619</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sellersapp-e5619.appspot.com</string>
+	<string>usersapp-e5619.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
