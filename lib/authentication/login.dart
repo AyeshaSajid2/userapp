@@ -5,6 +5,7 @@ import 'package:usersapp/widgets/error_dialog.dart';
 import 'package:usersapp/widgets/loading_dialogue.dart';
 
 import '../global/global.dart';
+import '../home_screen/main_screen.dart';
 import '../widgets/custom_text_field.dart';
 import 'auth_screen.dart';
 
@@ -88,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             // ignore: use_build_context_synchronously
             context,
-            MaterialPageRoute(builder: (c) => const Scaffold()));
+            MaterialPageRoute(builder: (c) => const HomeScreen()));
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);

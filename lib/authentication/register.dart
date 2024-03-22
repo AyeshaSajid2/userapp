@@ -16,6 +16,7 @@ import 'package:usersapp/global/global.dart';
 import 'package:usersapp/widgets/custom_text_field.dart';
 import 'package:usersapp/widgets/error_dialog.dart';
 
+import '../home_screen/main_screen.dart';
 import '../widgets/loading_dialogue.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -130,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       saveDataToFirestore(currentUser!).then((value) {
         Navigator.pop(context);
         //send user to homePage
-        Route newRoute = MaterialPageRoute(builder: (c) => const Scaffold());
+        Route newRoute = MaterialPageRoute(builder: (c) => const HomeScreen());
         Navigator.pushReplacement(context, newRoute);
       });
     }

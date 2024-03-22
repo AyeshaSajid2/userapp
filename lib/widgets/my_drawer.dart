@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import '../authentication/auth_screen.dart';
 import '../global/global.dart';
 
+// ignore: use_key_in_widget_constructors
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
+          //header drawer
           Container(
             padding: const EdgeInsets.only(top: 25, bottom: 10),
             child: Column(
               children: [
-                //circle avatar in header of drawer
                 Material(
                   borderRadius: const BorderRadius.all(Radius.circular(80)),
                   elevation: 10,
@@ -43,10 +42,12 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
           ),
+
           const SizedBox(
             height: 12,
           ),
-          //Drawer body
+
+          //body drawer
           Container(
             padding: const EdgeInsets.only(top: 1.0),
             child: Column(
@@ -126,7 +127,7 @@ class MyDrawer extends StatelessWidget {
                     color: Colors.black,
                   ),
                   title: const Text(
-                    "Add New Adress",
+                    "Add New Address",
                     style: TextStyle(color: Colors.black),
                   ),
                   onTap: () {},
