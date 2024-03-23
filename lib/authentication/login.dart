@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:usersapp/widgets/menu_fetch.dart';
 import 'package:usersapp/widgets/error_dialog.dart';
 import 'package:usersapp/widgets/loading_dialogue.dart';
-
-import '../global/global.dart';
 import '../home_screen/main_screen.dart';
+import '../global/global.dart';
 import '../widgets/custom_text_field.dart';
 import 'auth_screen.dart';
 
@@ -31,7 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
       showDialog(
           context: context,
           builder: (c) {
-            return const ErrorDialoge(
+            // ignore: prefer_const_constructors
+            return ErrorDialog(
               message: "Please write email/password.",
             );
           });
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
       showDialog(
           context: context,
           builder: (c) {
-            return ErrorDialoge(
+            return ErrorDialog(
               message: error.message.toString(),
             );
           });
@@ -99,7 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
         showDialog(
             context: context,
             builder: (c) {
-              return const ErrorDialoge(
+              // ignore: prefer_const_constructors
+              return ErrorDialog(
                 message: "No record found.",
               );
             });

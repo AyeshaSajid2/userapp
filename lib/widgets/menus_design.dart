@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -9,10 +9,10 @@ class MenusDesignWidget extends StatefulWidget {
   Menus? model;
   BuildContext? context;
 
-  MenusDesignWidget({super.key, this.model, this.context});
+  // ignore: use_key_in_widget_constructors
+  MenusDesignWidget({this.model, this.context});
 
   @override
-  // ignore: library_private_types_in_public_api
   _MenusDesignWidgetState createState() => _MenusDesignWidgetState();
 }
 

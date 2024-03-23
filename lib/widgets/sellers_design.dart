@@ -1,17 +1,17 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
 import '../home_screen/menus_screen.dart';
 import '../models/sellers.dart';
 
-// ignore: must_be_immutable
 class SellersDesignWidget extends StatefulWidget {
   Sellers? model;
   BuildContext? context;
 
-  SellersDesignWidget({super.key, this.model, this.context});
+  SellersDesignWidget({this.model, this.context});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SellersDesignWidgetState createState() => _SellersDesignWidgetState();
 }
 
@@ -28,7 +28,6 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
-        // ignore: sized_box_for_whitespace
         child: Container(
           height: 280,
           width: MediaQuery.of(context).size.width,

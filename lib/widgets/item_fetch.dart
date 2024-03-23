@@ -4,12 +4,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:usersapp/models/menus.dart';
+import 'package:usersapp/widgets/items_design.dart';
 
+import '../models/items.dart';
 import '../models/sellers.dart';
 // import '../widgets/info_design.dart';
-import '../widgets/my_drawer.dart';
-import '../widgets/progress_bar.dart';
-import '../widgets/sellers_design.dart';
+import 'menus_design.dart';
+import 'my_drawer.dart';
+import 'progress_bar.dart';
+import 'sellers_design.dart';
 
 class HomeScreen extends StatefulWidget {
   // ignore: use_super_parameters
@@ -58,15 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+                colors: [
+                  Colors.cyan,
+                  Colors.amber,
+                ],
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp,
+              )),
         ),
         title: const Text(
           "iFood",
@@ -95,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 2),
                     autoPlayAnimationDuration:
-                        const Duration(milliseconds: 500),
+                    const Duration(milliseconds: 500),
                     autoPlayCurve: Curves.decelerate,
                     enlargeCenterPage: true,
                     scrollDirection: Axis.horizontal,
@@ -124,29 +128,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           StreamBuilder<QuerySnapshot>(
             stream:
-                FirebaseFirestore.instance.collection("sellers").snapshots(),
+            FirebaseFirestore.instance.collection("items").snapshots(),
             builder: (context, snapshot) {
               return !snapshot.hasData
                   ? SliverToBoxAdapter(
-                      child: Center(
-                        child: circularProgress(),
-                      ),
-                    )
+                child: Center(
+                  child: circularProgress(),
+                ),
+              )
                   : SliverStaggeredGrid.countBuilder(
-                      crossAxisCount: 1,
-                      staggeredTileBuilder: (c) => const StaggeredTile.fit(1),
-                      itemBuilder: (context, index) {
-                        Sellers sModel = Sellers.fromJson(
-                            snapshot.data!.docs[index].data()!
-                                as Map<String, dynamic>);
-                        //design for display sellers-cafes-restuarents
-                        return SellersDesignWidget(
-                          model: sModel,
-                          context: context,
-                        );
-                      },
-                      itemCount: snapshot.data!.docs.length,
-                    );
+                crossAxisCount: 1,
+                staggeredTileBuilder: (c) => const StaggeredTile.fit(1),
+                itemBuilder: (context, index) {
+                  Items sModel = Items.fromJson(
+                      snapshot.data!.docs[index].data()!
+                      as Map<String, dynamic>);
+                  //design for display sellers-cafes-restuarents
+                  return ItemsDesignWidget(
+                    model: sModel,
+                    context: context,
+                  );
+                },
+                itemCount: snapshot.data!.docs.length,
+              );
             },
           ),
         ],

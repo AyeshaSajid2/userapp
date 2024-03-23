@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
 import '../authentication/auth_screen.dart';
@@ -20,7 +22,6 @@ class MyDrawer extends StatelessWidget {
                   elevation: 10,
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
-                    // ignore: sized_box_for_whitespace
                     child: Container(
                       height: 160,
                       width: 160,
@@ -36,7 +37,8 @@ class MyDrawer extends StatelessWidget {
                 ),
                 Text(
                   sharedPreferences!.getString("name")!,
-                  style: const TextStyle(
+                  // ignore: prefer_const_constructors
+                  style: TextStyle(
                       color: Colors.black, fontSize: 20, fontFamily: "Train"),
                 ),
               ],

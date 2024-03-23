@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final IconData? data;
@@ -8,8 +9,8 @@ class CustomTextField extends StatelessWidget {
   bool? isObsecre = true;
   bool? enabled = true;
 
+  // ignore: use_key_in_widget_constructors
   CustomTextField({
-    super.key,
     this.controller,
     this.data,
     this.hintText,
@@ -32,13 +33,14 @@ class CustomTextField extends StatelessWidget {
         obscureText: isObsecre!,
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              data,
-              color: Colors.cyan,
-            ),
-            focusColor: Theme.of(context).primaryColor,
-            hintText: hintText),
+          border: InputBorder.none,
+          prefixIcon: Icon(
+            data,
+            color: Colors.cyan,
+          ),
+          focusColor: Theme.of(context).primaryColor,
+          hintText: hintText,
+        ),
       ),
     );
   }
