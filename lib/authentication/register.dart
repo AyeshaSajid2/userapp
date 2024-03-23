@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
 
 import 'dart:io';
 
@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:buyersapp/mainScreens/home_screen.dart';
+import '../home_screen/main_screen.dart';
 
 // import 'package:buyersapp/widgets/loading_dialoge.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,11 +14,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as fStorage;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:usersapp/global/global.dart';
+import 'package:usersapp/widgets/menu_fetch.dart';
 import 'package:usersapp/widgets/custom_text_field.dart';
 import 'package:usersapp/widgets/error_dialog.dart';
 
 import '../home_screen/main_screen.dart';
 import '../widgets/loading_dialogue.dart';
+import '../widgets/menu_fetch.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -51,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       showDialog(
           context: context,
           builder: (c) {
-            return const ErrorDialoge(
+            return ErrorDialog(
               message: "Please select an image.",
             );
           });
@@ -88,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           showDialog(
               context: context,
               builder: (c) {
-                return const ErrorDialoge(
+                return ErrorDialog(
                   message:
                       "Please write the complete required info for Registration.",
                 );
@@ -98,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         showDialog(
             context: context,
             builder: (c) {
-              return const ErrorDialoge(
+              return ErrorDialog(
                 message: "Password do not match.",
               );
             });
@@ -121,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       showDialog(
           context: context,
           builder: (c) {
-            return ErrorDialoge(
+            return ErrorDialog(
               message: error.message.toString(),
             );
           });

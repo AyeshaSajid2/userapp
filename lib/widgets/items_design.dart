@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -9,10 +9,10 @@ class ItemsDesignWidget extends StatefulWidget {
   Items? model;
   BuildContext? context;
 
-  ItemsDesignWidget({super.key, this.model, this.context});
+  // ignore: use_key_in_widget_constructors
+  ItemsDesignWidget({this.model, this.context});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ItemsDesignWidgetState createState() => _ItemsDesignWidgetState();
 }
 
@@ -29,7 +29,6 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
-        // ignore: sized_box_for_whitespace
         child: Container(
           height: 280,
           width: MediaQuery.of(context).size.width,
