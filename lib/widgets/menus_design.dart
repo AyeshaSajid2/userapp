@@ -1,30 +1,29 @@
-// ignore_for_file: must_be_immutable, library_private_types_in_public_api, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
+import 'package:usersapp/mainScreens/items_screen.dart';
+import 'package:usersapp/models/menus.dart';
+import 'package:usersapp/models/sellers.dart';
 
-import '../home_screen/items_screen.dart';
-import '../models/menus.dart';
 
-class MenusDesignWidget extends StatefulWidget {
+class MenusDesignWidget extends StatefulWidget
+{
   Menus? model;
   BuildContext? context;
 
-  // ignore: use_key_in_widget_constructors
   MenusDesignWidget({this.model, this.context});
 
   @override
   _MenusDesignWidgetState createState() => _MenusDesignWidgetState();
 }
 
+
+
 class _MenusDesignWidgetState extends State<MenusDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (c) => ItemsScreen(model: widget.model)));
+      onTap: ()
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (c)=> ItemsScreen(model: widget.model)));
       },
       splashColor: Colors.amber,
       child: Padding(
@@ -44,9 +43,7 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
                 height: 220.0,
                 fit: BoxFit.cover,
               ),
-              const SizedBox(
-                height: 1.0,
-              ),
+              const SizedBox(height: 1.0,),
               Text(
                 widget.model!.menuTitle!,
                 style: const TextStyle(

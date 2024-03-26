@@ -1,12 +1,15 @@
-// ignore: unused_import, depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:geocoding/geocoding.dart';
-import 'package:usersapp/firebase_options.dart';
-import 'package:usersapp/global/global.dart';
-import 'package:usersapp/splash_screen/splashscreen.dart';
+import 'package:usersapp/assistantMethods/address_changer.dart';
+import 'package:usersapp/assistantMethods/cart_Item_counter.dart';
+import 'package:usersapp/assistantMethods/total_amount.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'firebase_options.dart';
+import 'global/global.dart';
+import 'splashScreen/splash_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,20 +22,26 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'FoodFlow',
-      // debugShowchecked,
-      theme: ThemeData(
-          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          // useMaterial3: true,
-          ),
-      home: const MySplashScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c)=> CartItemCounter()),
+        ChangeNotifierProvider(create: (c)=> TotalAmount()),
+        ChangeNotifierProvider(create: (c)=> AddressChanger()),
+      ],
+      child: MaterialApp(
+        title: 'Users App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MySplashScreen(),
+      ),
     );
   }
 }
+
+

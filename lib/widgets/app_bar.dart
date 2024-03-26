@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:usersapp/assistantMethods/cart_Item_counter.dart';
+import 'package:usersapp/main.dart';
+import 'package:usersapp/mainScreens/cart_screen.dart';
+import 'package:provider/provider.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+
+class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
+  final String? sellerUID;
 
-  // ignore: use_key_in_widget_constructors
-  const MyAppBar({this.bottom});
+  MyAppBar({this.bottom, this.sellerUID});
 
+  @override
+  _MyAppBarState createState() => _MyAppBarState();
+
+  @override
+  Size get preferredSize => bottom == null ? Size(56, AppBar().preferredSize.height) : Size(56, 80 + AppBar().preferredSize.height);
+}
+
+class _MyAppBarState extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       flexibleSpace: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          ),
+          color: Color.fromARGB(255, 60, 116, 164),
         ),
       ),
       leading: IconButton(
@@ -39,15 +43,22 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         Stack(
           children: [
             IconButton(
-              icon: const Icon(Icons.shopping_cart, color: Colors.cyan),
+              icon: const Icon(
+                Icons.shopping_cart,
+                color: Colors.cyan,
+              ),
               onPressed: () {
                 //send user to cart screen
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (c) => CartScreen(sellerUID: widget.sellerUID)));
               },
             ),
-            const Positioned(
+            Positioned(
               child: Stack(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.brightness_1,
                     size: 20.0,
                     color: Colors.green,
@@ -56,9 +67,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     top: 3,
                     right: 4,
                     child: Center(
-                      child: Text(
-                        "0",
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      child: Consumer<CartItemCounter>(
+                        builder: (context, counter, c) {
+                          return Text(
+                            counter.count.toString(),
+                            style: const TextStyle(color: Colors.white, fontSize: 12),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -70,9 +85,4 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
-
-  @override
-  Size get preferredSize => bottom == null
-      ? Size(56, AppBar().preferredSize.height)
-      : Size(56, 80 + AppBar().preferredSize.height);
 }

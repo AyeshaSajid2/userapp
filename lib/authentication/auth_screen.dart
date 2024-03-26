@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'register.dart';
 
+
 class AuthScreen extends StatefulWidget {
   // ignore: use_super_parameters
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _AuthScreenState createState() => _AuthScreenState();
 }
 
@@ -38,16 +38,16 @@ class _AuthScreenState extends State<AuthScreen>
             : Colors.transparent,
         gradient: _selectedIndex == index
             ? const LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color(0xFF56B89F),
-                  Color(0xFF39F3BB),
-                  Color.fromRGBO(210, 217, 223, 1),
-                  Color.fromRGBO(147, 187, 222, 1),
-                  Colors.cyan,
-                ],
-              )
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xFF56B89F),
+            Color(0xFF39F3BB),
+            Color.fromRGBO(210, 217, 223, 1),
+            Color.fromRGBO(147, 187, 222, 1),
+            Colors.cyan,
+          ],
+        )
             : null,
       ),
       child: InkWell(

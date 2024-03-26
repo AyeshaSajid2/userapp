@@ -1,32 +1,37 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:usersapp/assistantMethods/assistant_methods.dart';
+import 'package:usersapp/models/items.dart';
+import 'package:usersapp/widgets/app_bar.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 
-import '../models/items.dart';
-import '../widgets/app_bar.dart';
 
-class ItemDetailsScreen extends StatefulWidget {
+class ItemDetailsScreen extends StatefulWidget
+{
   final Items? model;
-  // ignore: use_key_in_widget_constructors
-  const ItemDetailsScreen({this.model});
+  ItemDetailsScreen({this.model});
 
   @override
   _ItemDetailsScreenState createState() => _ItemDetailsScreenState();
 }
 
-class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
+
+
+
+class _ItemDetailsScreenState extends State<ItemDetailsScreen>
+{
   TextEditingController counterTextEditingController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
-      // ignore: prefer_const_constructors
-      appBar: MyAppBar(),
+      appBar: MyAppBar(sellerUID: widget.model!.sellerUID),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.network(widget.model!.thumbnailUrl.toString()),
+
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: NumberInputPrefabbed.roundedButtons(
@@ -38,6 +43,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               buttonArrangement: ButtonArrangement.incRightDecLeft,
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -45,43 +51,45 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.model!.longDescription.toString(),
               textAlign: TextAlign.justify,
-              style:
-                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
+              style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              // ignore: prefer_interpolation_to_compose_strings
               widget.model!.price.toString() + " €",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+
+          const SizedBox(height: 10,),
+
           Center(
             child: InkWell(
-              onTap: () {
-                //add to cart
+              onTap: ()
+              {
+                int itemCounter = int.parse(counterTextEditingController.text);
+
+                List<String> separateItemIDsList = separateItemIDs();
+
+                //1.check if item exist already in cart
+                separateItemIDsList.contains(widget.model!.itemID)
+                    ? Fluttertoast.showToast(msg: "Item is already in Cart.")
+                    :
+                    //2.add to cart
+                    addItemToCart(widget.model!.itemID, context, itemCounter);
               },
               child: Container(
                 decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                  colors: [
-                    Colors.cyan,
-                    Colors.amber,
-                  ],
-                  begin: FractionalOffset(0.0, 0.0),
-                  end: FractionalOffset(1.0, 0.0),
-                  stops: [0.0, 1.0],
-                  tileMode: TileMode.clamp,
-                )),
+                  color: Color.fromARGB(255, 60, 116, 164),
+                ),
                 width: MediaQuery.of(context).size.width - 13,
                 height: 50,
                 child: const Center(

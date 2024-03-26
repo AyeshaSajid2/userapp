@@ -1,30 +1,29 @@
-// ignore_for_file: must_be_immutable, library_private_types_in_public_api, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
+import 'package:usersapp/mainScreens/item_detail_screen.dart';
+import 'package:usersapp/models/items.dart';
+import 'package:usersapp/models/sellers.dart';
 
-import '../home_screen/item_detail_screen.dart';
-import '../models/items.dart';
 
-class ItemsDesignWidget extends StatefulWidget {
+class ItemsDesignWidget extends StatefulWidget
+{
   Items? model;
   BuildContext? context;
 
-  // ignore: use_key_in_widget_constructors
   ItemsDesignWidget({this.model, this.context});
 
   @override
   _ItemsDesignWidgetState createState() => _ItemsDesignWidgetState();
 }
 
+
+
 class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (c) => ItemDetailsScreen(model: widget.model)));
+      onTap: ()
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (c)=> ItemDetailsScreen(model: widget.model)));
       },
       splashColor: Colors.amber,
       child: Padding(
@@ -44,9 +43,7 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
                 height: 220.0,
                 fit: BoxFit.cover,
               ),
-              const SizedBox(
-                height: 1.0,
-              ),
+              const SizedBox(height: 1.0,),
               Text(
                 widget.model!.title!,
                 style: const TextStyle(

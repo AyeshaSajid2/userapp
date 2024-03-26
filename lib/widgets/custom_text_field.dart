@@ -1,15 +1,14 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+
+class CustomTextField extends StatelessWidget
+{
   final TextEditingController? controller;
   final IconData? data;
   final String? hintText;
   bool? isObsecre = true;
   bool? enabled = true;
 
-  // ignore: use_key_in_widget_constructors
   CustomTextField({
     this.controller,
     this.data,
@@ -19,7 +18,8 @@ class CustomTextField extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,

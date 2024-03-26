@@ -1,11 +1,10 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
+import 'package:usersapp/mainScreens/menus_screen.dart';
+import 'package:usersapp/models/sellers.dart';
 
-import '../home_screen/menus_screen.dart';
-import '../models/sellers.dart';
 
-class SellersDesignWidget extends StatefulWidget {
+class SellersDesignWidget extends StatefulWidget
+{
   Sellers? model;
   BuildContext? context;
 
@@ -15,15 +14,15 @@ class SellersDesignWidget extends StatefulWidget {
   _SellersDesignWidgetState createState() => _SellersDesignWidgetState();
 }
 
+
+
 class _SellersDesignWidgetState extends State<SellersDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (c) => MenusScreen(model: widget.model)));
+      onTap: ()
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (c)=> MenusScreen(model: widget.model)));
       },
       splashColor: Colors.amber,
       child: Padding(
@@ -39,13 +38,11 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
                 color: Colors.grey[300],
               ),
               Image.network(
-                widget.model!.sellerAvatarUrl!,
-                height: 220.0,
+                  widget.model!.sellerAvatarUrl!,
+                  height: 220.0,
                 fit: BoxFit.cover,
               ),
-              const SizedBox(
-                height: 1.0,
-              ),
+              const SizedBox(height: 1.0,),
               Text(
                 widget.model!.sellerName!,
                 style: const TextStyle(

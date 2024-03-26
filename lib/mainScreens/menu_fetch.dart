@@ -4,22 +4,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:usersapp/assistantMethods/assistant_methods.dart';
+import 'package:usersapp/models/menus.dart';
+import 'package:usersapp/widgets/menus_design.dart';
 
 import '../models/sellers.dart';
 // import '../widgets/info_design.dart';
+import '../widgets/menu_fetch.dart';
 import '../widgets/my_drawer.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/sellers_design.dart';
 
-class HomeScreen extends StatefulWidget {
-  // ignore: use_super_parameters
-  const HomeScreen({Key? key}) : super(key: key);
+class MenuFetch extends StatefulWidget {
+  const MenuFetch({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MenuFetchState createState() => _MenuFetchState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+
+
+class _MenuFetchState extends State<MenuFetch>
+{
   final items = [
     "images/slider/0.jpg",
     "images/slider/1.jpg",
@@ -52,27 +58,29 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+
+    clearCartNow(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.cyan,
-              Colors.amber,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          )),
+            color: Color.fromARGB(255, 60, 116, 164),
         ),
         title: const Text(
           "iFood",
           style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
         ),
         centerTitle: true,
+        // actions: [
+        //   ElevatedButton(onPressed:
+        //   Navigator.push(context, MaterialPageRoute(builder: (c) => HomeScreen())),
+        //       child: Text("Menus"));
+        // ],
       ),
       drawer: MyDrawer(),
       body: CustomScrollView(
@@ -80,28 +88,26 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              // ignore: sized_box_for_whitespace
               child: Container(
                 height: MediaQuery.of(context).size.height * .3,
                 width: MediaQuery.of(context).size.width,
                 child: CarouselSlider(
                   options: CarouselOptions(
                     height: MediaQuery.of(context).size.height * .3,
-                    aspectRatio: 16 / 9,
+                    aspectRatio: 16/9,
                     viewportFraction: 0.8,
                     initialPage: 0,
                     enableInfiniteScroll: true,
                     reverse: false,
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 2),
-                    autoPlayAnimationDuration:
-                        const Duration(milliseconds: 500),
+                    autoPlayAnimationDuration: const Duration(milliseconds: 500),
                     autoPlayCurve: Curves.decelerate,
                     enlargeCenterPage: true,
                     scrollDirection: Axis.horizontal,
                   ),
                   items: items.map((index) {
-                    return Builder(builder: (BuildContext context) {
+                    return Builder(builder: (BuildContext context){
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -123,30 +129,29 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           StreamBuilder<QuerySnapshot>(
-            stream:
-                FirebaseFirestore.instance.collection("sellers").snapshots(),
-            builder: (context, snapshot) {
+            stream: FirebaseFirestore.instance
+                .collection("menus")
+                .snapshots(),
+            builder: (context, snapshot)
+            {
               return !snapshot.hasData
-                  ? SliverToBoxAdapter(
-                      child: Center(
-                        child: circularProgress(),
-                      ),
-                    )
+                  ? SliverToBoxAdapter(child: Center(child: circularProgress(),),)
                   : SliverStaggeredGrid.countBuilder(
-                      crossAxisCount: 1,
-                      staggeredTileBuilder: (c) => const StaggeredTile.fit(1),
-                      itemBuilder: (context, index) {
-                        Sellers sModel = Sellers.fromJson(
-                            snapshot.data!.docs[index].data()!
-                                as Map<String, dynamic>);
-                        //design for display sellers-cafes-restuarents
-                        return SellersDesignWidget(
-                          model: sModel,
-                          context: context,
-                        );
-                      },
-                      itemCount: snapshot.data!.docs.length,
-                    );
+                crossAxisCount: 1,
+                staggeredTileBuilder: (c) => StaggeredTile.fit(1),
+                itemBuilder: (context, index)
+                {
+                  Menus mModel = Menus.fromJson(
+                      snapshot.data!.docs[index].data()! as Map<String, dynamic>
+                  );
+                  //design for display sellers-cafes-restuarents
+                  return MenusDesignWidget(
+                    model: mModel,
+                    context: context,
+                  );
+                },
+                itemCount: snapshot.data!.docs.length,
+              );
             },
           ),
         ],
