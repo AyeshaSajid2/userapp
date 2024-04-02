@@ -60,7 +60,7 @@ class _MenuScreennState extends State<MenuScreenn> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-            color: Color.fromARGB(255, 60, 116, 164);
+            color: Color.fromARGB(255, 60, 116, 164),
 
         ),
         title: const Text(

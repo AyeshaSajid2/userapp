@@ -26,7 +26,7 @@ class _MySplashScreenState extends State<MySplashScreen>
       duration: const Duration(seconds: 5),
     );
 
-    _photoAnimation = Tween<double>(begin: 0, end: 1.22).animate(
+    _photoAnimation = Tween<double>(begin: 0, end: 1.18).animate(
       CurvedAnimation(
         parent: _photoAnimationController,
         curve: Curves.easeInOut,
@@ -54,8 +54,8 @@ class _MySplashScreenState extends State<MySplashScreen>
               builder: (context, child) {
                 return SlideTransition(
                   position: _photoAnimation.drive(Tween<Offset>(
-                    begin: const Offset(0, -1), // Start from the top
-                    end: const Offset(0, 0),
+                    begin: const Offset(0, -2), // Start from the top
+                    end: const Offset(0, -1),
                   )),
                   child: Transform.scale(
                     scale: _photoAnimation.value,
