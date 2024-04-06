@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:usersapp/mainScreens/home_screen.dart';
 
+import '../mainScreens/home-screen.dart';
 
 class StatusBanner extends StatelessWidget
 {

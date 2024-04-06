@@ -5,11 +5,12 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:usersapp/assistantMethods/assistant_methods.dart';
 import 'package:usersapp/authentication/auth_screen.dart';
 import 'package:usersapp/global/global.dart';
-import 'package:usersapp/mainScreens/menu_fetch.dart';
 import 'package:usersapp/models/sellers.dart';
 import 'package:usersapp/widgets/sellers_design.dart';
-import 'package:usersapp/widgets/my_drawer.dart';
+import 'package:usersapp/widgets/my-drawer.dart';
 import 'package:usersapp/widgets/progress_bar.dart';
+
+import 'menu_fetch.dart';
 
 
 
@@ -25,33 +26,33 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
 {
   final items = [
-    "images/slider/0.jpg",
-    "images/slider/1.jpg",
-    "images/slider/2.jpg",
-    "images/slider/3.jpg",
-    "images/slider/4.jpg",
-    "images/slider/5.jpg",
-    "images/slider/6.jpg",
-    "images/slider/7.jpg",
-    "images/slider/8.jpg",
-    "images/slider/9.jpg",
-    "images/slider/10.jpg",
-    "images/slider/11.jpg",
-    "images/slider/12.jpg",
-    "images/slider/13.jpg",
-    "images/slider/14.jpg",
-    "images/slider/15.jpg",
-    "images/slider/16.jpg",
-    "images/slider/17.jpg",
-    "images/slider/18.jpg",
-    "images/slider/19.jpg",
-    "images/slider/20.jpg",
-    "images/slider/21.jpg",
-    "images/slider/22.jpg",
-    "images/slider/23.jpg",
-    "images/slider/24.jpg",
-    "images/slider/25.jpg",
-    "images/slider/26.jpg",
+    "slider/0.jpg",
+    "slider/1.jpg",
+    "slider/2.jpg",
+    "slider/3.jpg",
+    "slider/4.jpg",
+    "slider/5.jpg",
+    "slider/6.jpg",
+    "slider/7.jpg",
+    "slider/8.jpg",
+    "slider/9.jpg",
+    "slider/10.jpg",
+    "slider/11.jpg",
+    "slider/12.jpg",
+    "slider/13.jpg",
+    "slider/14.jpg",
+    "slider/15.jpg",
+    "slider/16.jpg",
+    "slider/17.jpg",
+    "slider/18.jpg",
+    "slider/19.jpg",
+    "slider/20.jpg",
+    "slider/21.jpg",
+    "slider/22.jpg",
+    "slider/23.jpg",
+    "slider/24.jpg",
+    "slider/25.jpg",
+    "slider/26.jpg",
     "slider/27.jpg",
   ];
 
@@ -68,16 +69,16 @@ class _HomeScreenState extends State<HomeScreen>
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.cyan,
-                Colors.amber,
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            ),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.cyan,
+                  Colors.amber,
+                ],
+                begin:  FractionalOffset(0.0, 0.0),
+                end:  FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp,
+              )
           ),
         ),
         title: const Text(
@@ -86,15 +87,14 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         centerTitle: true,
         actions: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (c) => MenuFetch()));
-              },
-              child: Text("Menus")
+          ElevatedButton(onPressed: ()
+          {
+            Navigator.push(context, MaterialPageRoute(builder: (c) => MenuFetch()));
+          }, child: Text("Items"),
           )
+
         ],
       ),
-
       drawer: MyDrawer(),
       body: CustomScrollView(
         slivers: [
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen>
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Image.asset(
-                              index,
+                            index,
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -150,21 +150,21 @@ class _HomeScreenState extends State<HomeScreen>
               return !snapshot.hasData
                   ? SliverToBoxAdapter(child: Center(child: circularProgress(),),)
                   : SliverStaggeredGrid.countBuilder(
-                      crossAxisCount: 1,
-                      staggeredTileBuilder: (c) => StaggeredTile.fit(1),
-                      itemBuilder: (context, index)
-                      {
-                        Sellers sModel = Sellers.fromJson(
-                          snapshot.data!.docs[index].data()! as Map<String, dynamic>
-                        );
-                        //design for display sellers-cafes-restuarents
-                        return SellersDesignWidget(
-                          model: sModel,
-                          context: context,
-                        );
-                      },
-                      itemCount: snapshot.data!.docs.length,
-                    );
+                crossAxisCount: 1,
+                staggeredTileBuilder: (c) => StaggeredTile.fit(1),
+                itemBuilder: (context, index)
+                {
+                  Sellers sModel = Sellers.fromJson(
+                      snapshot.data!.docs[index].data()! as Map<String, dynamic>
+                  );
+                  //design for display sellers-cafes-restuarents
+                  return SellersDesignWidget(
+                    model: sModel,
+                    context: context,
+                  );
+                },
+                itemCount: snapshot.data!.docs.length,
+              );
             },
           ),
         ],

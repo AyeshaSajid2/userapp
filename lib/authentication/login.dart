@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:usersapp/global/global.dart';
-import 'package:usersapp/mainScreens/home_screen.dart';
 import 'package:usersapp/widgets/custom_text_field.dart';
 import 'package:usersapp/widgets/error_dialog.dart';
 import 'package:usersapp/widgets/loading_dialog.dart';
 
+import '../mainScreens/home-screen.dart';
 import 'auth_screen.dart';
 
 

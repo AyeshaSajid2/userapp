@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:usersapp/authentication/auth_screen.dart';
 import 'package:usersapp/global/global.dart';
-import 'package:usersapp/mainScreens/home_screen.dart';
+import 'package:usersapp/mainScreens/address_screen.dart';
 import 'package:usersapp/mainScreens/my_orders_screen.dart';
+
+import '../mainScreens/history-screen.dart';
+import '../mainScreens/home-screen.dart';
+import '../mainScreens/search-screen.dart';
 
 
 class MyDrawer extends StatelessWidget
@@ -96,7 +100,7 @@ class MyDrawer extends StatelessWidget
                   ),
                   onTap: ()
                   {
-
+                    Navigator.push(context, MaterialPageRoute(builder: (c)=> HistoryScreen()));
                   },
                 ),
                 const Divider(
@@ -112,6 +116,7 @@ class MyDrawer extends StatelessWidget
                   ),
                   onTap: ()
                   {
+                    Navigator.push(context, MaterialPageRoute(builder: (c)=> SearchScreen()));
 
                   },
                 ),
@@ -128,7 +133,7 @@ class MyDrawer extends StatelessWidget
                   ),
                   onTap: ()
                   {
-
+                    Navigator.push(context, MaterialPageRoute(builder: (c)=> AddressScreen()));
                   },
                 ),
                 const Divider(

@@ -11,7 +11,7 @@ import 'package:usersapp/widgets/menus_design.dart';
 import '../models/sellers.dart';
 // import '../widgets/info_design.dart';
 import '../widgets/menu_fetch.dart';
-import '../widgets/my_drawer.dart';
+import '../widgets/my-drawer.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/sellers_design.dart';
 
